@@ -7,7 +7,7 @@ Join us in this talk, where we present to you why the core model of your product
 ## About the speakers
 
 ### Kenny Baas-Schwegler
-Kenny Baas-Schwegler is a software engineer and consultant who focuses on software quality in Xebia. He mentors and coaches teams using practices and techniques from Domain-Driven Design, Behaviour-Driven Development, Test-Driven Development, and Continuous Delivery.
+Kenny Baas-Schwegler is a software engineer and consultant focusing on software quality in Xebia. He mentors and coaches teams using practices and techniques from Domain-Driven Design, Behaviour-Driven Development, Test-Driven Development, and Continuous Delivery.
 
 He is an advocate for multidisciplinary collaboration in open spaces. Using techniques such as Event Storming and Example Mapping, he helps engineer requirements to design and model software. With these methods, he aims to create a transparent, collaborative domain space with constant and instant feedback when delivering software.
 
@@ -18,4 +18,4 @@ My long experience in IT has allowed me to design better collaborative approache
 
 Like the hummingbird, everyone does their part to create software that will better impact its users. By leveraging a domain-driven design approach, I facilitate more transparent communication between stakeholders and software creators through collaborative modeling and deep democracy, decoding complexities, resolving conflicts, and ensuring that software remains agile in the face of business demands.
 
-As a consultant for OCTO Technology, technical lead and software architect, and agile and technical coach, I catalyze organizations and teams towards the design and construction of sustainable and clean software architectures..
+As a consultant for OCTO Technology, technical lead and software architect, and agile and technical coach, I catalyze organizations and teams toward the design and construction of sustainable and clean software architectures. I am the host of the BDD Paris Meetup and am very involved in the Domain-Driven Design community. 
