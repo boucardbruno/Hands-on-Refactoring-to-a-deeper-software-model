@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace SeatsSuggestions.Tests.AcceptanceTests;
 
 [TestFixture]
-public class SeatAllocatorShould
+public class SeatingPlaceSuggestingMakerShould
 {
     [Test]
     public void Return_SeatsNotAvailable_when_Auditorium_has_all_its_seats_already_reserved()
@@ -22,9 +22,9 @@ public class SeatAllocatorShould
         var auditoriumLayoutAdapter =
             new AuditoriumSeatingAdapter(new AuditoriumLayoutRepository(), new ReservationsProvider());
 
-        var seatAllocator = new SeatingPlaceSuggestingMaker(auditoriumLayoutAdapter);
+        var seatingPlaceSuggestingMaker = new SeatingPlaceSuggestingMaker(auditoriumLayoutAdapter);
 
-        var suggestionsMade = seatAllocator.MakeSuggestions(showId, partyRequested);
+        var suggestionsMade = seatingPlaceSuggestingMaker.MakeSuggestions(showId, partyRequested);
         Check.That(suggestionsMade.PartyRequested).IsEqualTo(partyRequested);
         Check.That(suggestionsMade.ShowId).IsEqualTo(showId);
 
@@ -45,9 +45,9 @@ public class SeatAllocatorShould
         var auditoriumLayoutAdapter =
             new AuditoriumSeatingAdapter(new AuditoriumLayoutRepository(), new ReservationsProvider());
 
-        var seatAllocator = new SeatingPlaceSuggestingMaker(auditoriumLayoutAdapter);
+        var seatingPlaceSuggestingMaker = new SeatingPlaceSuggestingMaker(auditoriumLayoutAdapter);
 
-        var suggestionsMade = seatAllocator.MakeSuggestions(showId, partyRequested);
+        var suggestionsMade = seatingPlaceSuggestingMaker.MakeSuggestions(showId, partyRequested);
 
         Check.That(suggestionsMade.SeatNames(PricingCategory.First)).ContainsExactly("A3");
     }
@@ -78,6 +78,7 @@ public class SeatAllocatorShould
         Check.That(suggestionsMade.SeatNames(PricingCategory.Second)).ContainsExactly("A1", "A2", "A9");
         Check.That(suggestionsMade.SeatNames(PricingCategory.Third)).ContainsExactly("E1", "E2", "E3");
         
-        // BUG!!! => return A6, A7, A8 instead of the expected A1, A2, A3Check.That(suggestionsMade.SeatNames(PricingCategory.Mixed)).ContainsExactly("A1", "A2", "A3");
+        // BUG!!! => return A6, A7, A8 instead of the expected A1, A2, A3
+        Check.That(suggestionsMade.SeatNames(PricingCategory.Mixed)).ContainsExactly("A1", "A2", "A3");
     }
 }
