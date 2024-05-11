@@ -48,20 +48,4 @@ public class AuditoriumSeating : ValueType<AuditoriumSeating>
     {
         return new object[] { new DictionaryByValue<string, Row>(_rows) };
     }
-
-    private AuditoriumSeating AllocateSeats(IEnumerable<SeatingPlace> updatedSeats)
-    {
-        var newVersionOfRows = new Dictionary<string, Row>(_rows);
-
-        foreach (var updatedSeat in updatedSeats)
-        {
-            var formerRow = newVersionOfRows[updatedSeat.RowName];
-            var newVersionOfRow = formerRow.Allocate(updatedSeat);
-            newVersionOfRows[updatedSeat.RowName] = newVersionOfRow;
-        }
-
-        _rows = newVersionOfRows;
-
-        return this;
-    }
 }
