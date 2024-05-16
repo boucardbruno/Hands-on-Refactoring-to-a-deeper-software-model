@@ -1,6 +1,6 @@
 package org.weaveit.seatssuggestions;
 
-public enum SeatAvailability {
+public enum SeatingPlaceAvailability {
     Reserved,
     Available,
     Allocated

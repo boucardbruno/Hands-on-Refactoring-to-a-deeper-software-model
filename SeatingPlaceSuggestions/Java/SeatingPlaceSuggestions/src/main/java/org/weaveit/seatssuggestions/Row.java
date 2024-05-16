@@ -1,22 +1,18 @@
 package org.weaveit.seatssuggestions;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Row {
-    private String name;
-    private List<SeatingPlaces> seats;
+public record Row(String name, List<SeatingPlace> seatingPlaces) {
 
-    public Row(String name, List<SeatingPlaces> seats) {
-        this.name = name;
-        this.seats = seats;
-    }
-
-    public void addSeat(SeatingPlaces seat) {
-        seats.add(seat);
+    public Row addSeatingPlace(SeatingPlace seatingPlace) {
+        List<SeatingPlace> newSeatingPlaces = new ArrayList<>(seatingPlaces);
+        newSeatingPlaces.add(seatingPlace);
+        return new Row(this.name, newSeatingPlaces);
     }
 
     public SeatingOptionSuggested suggestSeatingOption(int partyRequested, PricingCategory pricingCategory) {
-        for (SeatingPlaces seat : seats) {
+        for (SeatingPlace seat : seatingPlaces) {
             if (seat.isAvailable() && seat.matchCategory(pricingCategory)) {
                 SeatingOptionSuggested seatingOptionSuggested = new SeatingOptionSuggested(partyRequested, pricingCategory);
                 seatingOptionSuggested.addSeat(seat);
@@ -30,8 +26,18 @@ public class Row {
         return new SeatingOptionNotAvailable(partyRequested, pricingCategory);
     }
 
-    public List<SeatingPlaces> seats() {
-        return seats;
+    public Row allocate(SeatingPlace seatingPlace) {
+        List<SeatingPlace> newVersionOfSeats = new ArrayList<>();
+
+        for (SeatingPlace currentSeat : seatingPlaces) {
+            if (currentSeat.sameSeatingPlace(seatingPlace)) {
+                newVersionOfSeats.add(new SeatingPlace(seatingPlace.rowName(), seatingPlace.number(), seatingPlace.pricingCategory(), SeatingPlaceAvailability.Allocated));
+            } else {
+                newVersionOfSeats.add(currentSeat);
+            }
+        }
+
+        return new Row(seatingPlace.rowName(), newVersionOfSeats);
     }
 
 }

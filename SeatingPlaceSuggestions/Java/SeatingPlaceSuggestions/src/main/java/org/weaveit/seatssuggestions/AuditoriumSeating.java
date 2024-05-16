@@ -1,13 +1,14 @@
 package org.weaveit.seatssuggestions;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class AuditoriumSeating {
 
-    private final Map<String, Row> rows;
+    private Map<String, Row> rows;
 
     public AuditoriumSeating(Map<String, Row> rows) {
-        this.rows = Map.copyOf(rows);
+        this.rows = rows;
     }
 
     public SeatingOptionSuggested suggestSeatingOptionFor(int partyRequested, PricingCategory pricingCategory) {
@@ -23,7 +24,19 @@ public class AuditoriumSeating {
         return new SeatingOptionNotAvailable(partyRequested, pricingCategory);
     }
 
-    public Map<String, Row> rows() {
-        return this.rows;
+    public AuditoriumSeating allocate(SeatingOptionSuggested seatingOptionSuggested) {
+        // Update the seat references in the Auditorium
+        Map<String, Row> newVersionOfRows = new HashMap<>(rows);
+
+        for (SeatingPlace updatedSeat : seatingOptionSuggested.seats()) {
+            Row formerRow = newVersionOfRows.get(updatedSeat.rowName());
+            Row newVersionOfRow = formerRow.allocate(updatedSeat);
+            newVersionOfRows.put(updatedSeat.rowName(), newVersionOfRow);
+        }
+
+        rows = newVersionOfRows;
+
+        return this;
     }
+
 }

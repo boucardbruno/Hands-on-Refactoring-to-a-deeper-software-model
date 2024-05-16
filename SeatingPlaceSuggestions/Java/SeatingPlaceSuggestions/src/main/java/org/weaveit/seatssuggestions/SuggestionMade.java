@@ -5,18 +5,18 @@ import java.util.stream.Collectors;
 
 public class SuggestionMade {
 
-    private List<SeatingPlaces> suggestedSeats;
+    private List<SeatingPlace> suggestedSeats;
     private int partyRequested;
     private PricingCategory pricingCategory;
 
-    public SuggestionMade(List<SeatingPlaces> suggestedSeats, int partyRequested, PricingCategory pricingCategory) {
-        this.suggestedSeats = List.copyOf(suggestedSeats);
-        this.partyRequested = partyRequested;
-        this.pricingCategory = pricingCategory;
+    public SuggestionMade(SeatingOptionSuggested seatingOptionSuggested) {
+        this.suggestedSeats = List.copyOf(seatingOptionSuggested.seats());
+        this.partyRequested = seatingOptionSuggested.partyRequested();
+        this.pricingCategory = seatingOptionSuggested.pricingCategory();
     }
 
     public List<String> seatNames() {
-        return suggestedSeats.stream().map(SeatingPlaces::toString).collect(Collectors.toList());
+        return suggestedSeats.stream().map(SeatingPlace::toString).collect(Collectors.toList());
     }
 
     public boolean matchExpectation() {
