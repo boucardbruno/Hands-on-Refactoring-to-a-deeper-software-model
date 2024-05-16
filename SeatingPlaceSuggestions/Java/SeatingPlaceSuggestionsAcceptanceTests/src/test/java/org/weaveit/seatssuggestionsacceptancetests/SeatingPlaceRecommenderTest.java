@@ -11,7 +11,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
-class SeatingPlaceSuggestingMakerTest {
+class SeatingPlaceRecommenderTest {
 
 
     @Test
@@ -30,12 +30,7 @@ class SeatingPlaceSuggestingMakerTest {
         SeatingPlaceRecommender seatingPlaceRecommender = new SeatingPlaceRecommender(auditoriumLayoutAdapter);
 
         SuggestionsMade suggestionsMade = seatingPlaceRecommender.makeSuggestion(showId, partyRequested);
-
-        assertIterableEquals(
-                List.of("A3"),
-                suggestionsMade.seatNames(PricingCategory.First),
-                "Suggestions should contain exactly one available seat"
-        );
+        assertThat(suggestionsMade.seatNames(PricingCategory.First)).containsExactly("A3");
     }
 
     @Test

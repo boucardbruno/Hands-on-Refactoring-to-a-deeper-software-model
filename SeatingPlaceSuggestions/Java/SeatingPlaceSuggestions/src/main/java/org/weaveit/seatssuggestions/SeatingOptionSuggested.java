@@ -6,7 +6,7 @@ import java.util.List;
 public class SeatingOptionSuggested {
 
     private PricingCategory pricingCategory;
-    private List<SeatingPlaces> seats = new ArrayList<>();
+    private List<SeatingPlace> seats = new ArrayList<>();
     private int partyRequested;
 
     public SeatingOptionSuggested(int partyRequested, PricingCategory pricingCategory) {
@@ -14,7 +14,7 @@ public class SeatingOptionSuggested {
         this.partyRequested = partyRequested;
     }
 
-    public void addSeat(SeatingPlaces seat) {
+    public void addSeat(SeatingPlace seat) {
         seats.add(seat);
     }
 
@@ -22,7 +22,10 @@ public class SeatingOptionSuggested {
         return seats.size() == partyRequested;
     }
 
-    public List<SeatingPlaces> seats() {
+    public List<SeatingPlace> seats() {
         return seats;
     }
+    public PricingCategory pricingCategory() { return pricingCategory; }
+    public int partyRequested() { return partyRequested; }
+
 }

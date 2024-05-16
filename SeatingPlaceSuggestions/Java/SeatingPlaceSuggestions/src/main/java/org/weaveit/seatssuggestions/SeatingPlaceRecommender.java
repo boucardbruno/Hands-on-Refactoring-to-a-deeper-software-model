@@ -41,8 +41,8 @@ public class SeatingPlaceRecommender {
             SeatingOptionSuggested seatingOptionSuggested = auditoriumSeating.suggestSeatingOptionFor(partyRequested, pricingCategory);
 
             if (seatingOptionSuggested.matchExpectation()) {
-                seatingOptionSuggested.seats().forEach(SeatingPlaces::allocate);
-                foundedSuggestions.add(new SuggestionMade(seatingOptionSuggested.seats(), partyRequested, pricingCategory));
+                auditoriumSeating = auditoriumSeating.allocate(seatingOptionSuggested);
+                foundedSuggestions.add(new SuggestionMade(seatingOptionSuggested));
             }
         }
 

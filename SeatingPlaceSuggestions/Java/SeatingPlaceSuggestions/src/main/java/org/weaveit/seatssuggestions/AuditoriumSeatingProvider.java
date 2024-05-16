@@ -34,7 +34,7 @@ public class AuditoriumSeatingProvider {
 
 
         for (Map.Entry<String, List<SeatDto>> rowDto : auditoriumDto.rows().entrySet()) {
-            List<SeatingPlaces> seats = new ArrayList<>();
+            List<SeatingPlace> seats = new ArrayList<>();
 
             rowDto.getValue().forEach(seatDto -> {
                 String rowName = rowDto.getKey();
@@ -43,7 +43,7 @@ public class AuditoriumSeatingProvider {
 
                 boolean isReserved = reservedSeatsDto.reservedSeats().contains(seatDto.name());
 
-                seats.add(new SeatingPlaces(rowName, number, pricingCategory, isReserved ? SeatAvailability.Reserved : SeatAvailability.Available));
+                seats.add(new SeatingPlace(rowName, number, pricingCategory, isReserved ? SeatingPlaceAvailability.Reserved : SeatingPlaceAvailability.Available));
             });
 
             rows.put(rowDto.getKey(), new Row(rowDto.getKey(), seats));
