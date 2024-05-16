@@ -16,9 +16,9 @@ public class AuditoriumSeatingShould
             new AuditoriumSeatingAdapter(new AuditoriumLayoutRepository(), new ReservationsProvider());
         var showIdWithoutReservationYet = "18";
         var auditoriumSeatingFirstInstance =
-            auditoriumLayoutAdapter.GetAuditoriumSeating(showIdWithoutReservationYet);
+            auditoriumLayoutAdapter.FindByShowId(showIdWithoutReservationYet);
         var auditoriumSeatingSecondInstance =
-            auditoriumLayoutAdapter.GetAuditoriumSeating(showIdWithoutReservationYet);
+            auditoriumLayoutAdapter.FindByShowId(showIdWithoutReservationYet);
 
         // Two different instances with same values should be equals
         Check.That(auditoriumSeatingSecondInstance).IsEqualTo(auditoriumSeatingFirstInstance);
