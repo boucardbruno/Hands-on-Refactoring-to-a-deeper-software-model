@@ -15,9 +15,9 @@ class AuditoriumSeatingTest {
                 new AuditoriumSeatingProvider(new AuditoriumLayoutRepository(), new ReservationsProvider());
         String showIdWithoutReservationYet = "18";
         AuditoriumSeating auditoriumSeatingFirstInstance =
-                auditoriumLayoutAdapter.getAuditoriumSeating(showIdWithoutReservationYet);
+                auditoriumLayoutAdapter.findByShowId(showIdWithoutReservationYet);
         AuditoriumSeating auditoriumSeatingSecondInstance =
-                auditoriumLayoutAdapter.getAuditoriumSeating(showIdWithoutReservationYet);
+                auditoriumLayoutAdapter.findByShowId(showIdWithoutReservationYet);
 
         // Two different instances with same values should be equals
         Assertions.assertEquals(auditoriumSeatingFirstInstance, auditoriumSeatingSecondInstance, "Instances with the same values should be equal");

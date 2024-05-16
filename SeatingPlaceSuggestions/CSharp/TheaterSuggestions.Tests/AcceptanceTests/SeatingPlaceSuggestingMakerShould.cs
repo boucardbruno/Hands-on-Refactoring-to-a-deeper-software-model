@@ -22,7 +22,7 @@ public class SeatingPlaceSuggestingMakerShould
         var auditoriumLayoutAdapter =
             new AuditoriumSeatingAdapter(new AuditoriumLayoutRepository(), new ReservationsProvider());
 
-        var seatingPlaceSuggestingMaker = new SeatingPlaceSuggestingMaker(auditoriumLayoutAdapter);
+        var seatingPlaceSuggestingMaker = new SeatingPlaceRecommender(auditoriumLayoutAdapter);
 
         var suggestionsMade = seatingPlaceSuggestingMaker.MakeSuggestions(showId, partyRequested);
         Check.That(suggestionsMade.PartyRequested).IsEqualTo(partyRequested);
@@ -45,7 +45,7 @@ public class SeatingPlaceSuggestingMakerShould
         var auditoriumLayoutAdapter =
             new AuditoriumSeatingAdapter(new AuditoriumLayoutRepository(), new ReservationsProvider());
 
-        var seatingPlaceSuggestingMaker = new SeatingPlaceSuggestingMaker(auditoriumLayoutAdapter);
+        var seatingPlaceSuggestingMaker = new SeatingPlaceRecommender(auditoriumLayoutAdapter);
 
         var suggestionsMade = seatingPlaceSuggestingMaker.MakeSuggestions(showId, partyRequested);
 
@@ -70,7 +70,7 @@ public class SeatingPlaceSuggestingMakerShould
         var auditoriumLayoutAdapter =
             new AuditoriumSeatingAdapter(new AuditoriumLayoutRepository(), new ReservationsProvider());
 
-        var seatingPlaceSuggestingMaker = new SeatingPlaceSuggestingMaker(auditoriumLayoutAdapter);
+        var seatingPlaceSuggestingMaker = new SeatingPlaceRecommender(auditoriumLayoutAdapter);
 
         var suggestionsMade = seatingPlaceSuggestingMaker.MakeSuggestions(showId, partyRequested);
 

@@ -13,7 +13,7 @@ public class SeatingPlaceRecommender {
 
     public SuggestionsMade makeSuggestion(String showId, int partyRequested) {
 
-        AuditoriumSeating auditoriumSeating = auditoriumSeatingProvider.getAuditoriumSeating(showId);
+        AuditoriumSeating auditoriumSeating = auditoriumSeatingProvider.findByShowId(showId);
 
         SuggestionsMade suggestionsMade = new SuggestionsMade(showId, partyRequested);
         

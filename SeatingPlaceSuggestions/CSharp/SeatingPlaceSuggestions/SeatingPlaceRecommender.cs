@@ -2,19 +2,13 @@
 
 namespace SeatsSuggestions;
 
-public class SeatingPlaceSuggestingMaker
+public class SeatingPlaceRecommender(AuditoriumSeatingAdapter auditoriumSeatingAdapter)
 {
     private const int NumberOfSuggestionsPerPricingCategory = 3;
-    private readonly AuditoriumSeatingAdapter _auditoriumSeatingAdapter;
-
-    public SeatingPlaceSuggestingMaker(AuditoriumSeatingAdapter auditoriumSeatingAdapter)
-    {
-        _auditoriumSeatingAdapter = auditoriumSeatingAdapter;
-    }
 
     public SuggestionsMade MakeSuggestions(string showId, int partyRequested)
     {
-        var auditoriumSeating = _auditoriumSeatingAdapter.GetAuditoriumSeating(showId);
+        var auditoriumSeating = auditoriumSeatingAdapter.FindByShowId(showId);
 
         var suggestionsMade = new SuggestionsMade(showId, partyRequested);
 

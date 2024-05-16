@@ -7,22 +7,14 @@ namespace SeatsSuggestions;
 ///     Adapt Dtos coming from the external dependencies (ReservationsProvider, AuditoriumLayoutRepository) to
 ///     AuditoriumSeating instances.
 /// </summary>
-public class AuditoriumSeatingAdapter
+public class AuditoriumSeatingAdapter(
+    IProvideAuditoriumLayouts auditoriumLayoutRepository,
+    IProvideCurrentReservations reservationsProvider)
 {
-    private readonly IProvideAuditoriumLayouts _auditoriumLayoutRepository;
-    private readonly IProvideCurrentReservations _reservedSeatsRepository;
-
-    public AuditoriumSeatingAdapter(IProvideAuditoriumLayouts auditoriumLayoutRepository,
-        IProvideCurrentReservations reservationsProvider)
+    public AuditoriumSeating FindByShowId(string showId)
     {
-        _auditoriumLayoutRepository = auditoriumLayoutRepository;
-        _reservedSeatsRepository = reservationsProvider;
-    }
-
-    public AuditoriumSeating GetAuditoriumSeating(string showId)
-    {
-        return Adapt(_auditoriumLayoutRepository.GetAuditoriumSeatingFor(showId),
-            _reservedSeatsRepository.GetReservedSeats(showId));
+        return Adapt(auditoriumLayoutRepository.FindByShowId(showId),
+            reservationsProvider.GetReservedSeats(showId));
     }
 
     private static AuditoriumSeating Adapt(AuditoriumDto auditoriumDto, ReservedSeatsDto reservedSeatsDto)

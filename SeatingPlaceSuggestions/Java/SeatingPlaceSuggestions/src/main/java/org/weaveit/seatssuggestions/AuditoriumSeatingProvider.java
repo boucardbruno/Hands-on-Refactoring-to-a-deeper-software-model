@@ -22,8 +22,8 @@ public class AuditoriumSeatingProvider {
         this.reservedSeatsRepository = reservationsProvider;
     }
 
-    public AuditoriumSeating getAuditoriumSeating(String showId) {
-        return adapt(auditoriumLayoutRepository.getAuditoriumSeatingFor(showId),
+    public AuditoriumSeating findByShowId(String showId) {
+        return adapt(auditoriumLayoutRepository.findByShowId(showId),
                 reservedSeatsRepository.getReservedSeats(showId));
 
     }

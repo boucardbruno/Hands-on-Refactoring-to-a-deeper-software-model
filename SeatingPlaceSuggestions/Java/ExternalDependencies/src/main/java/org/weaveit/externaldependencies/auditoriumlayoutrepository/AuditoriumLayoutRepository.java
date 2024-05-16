@@ -36,7 +36,7 @@ public class AuditoriumLayoutRepository {
         return new AuditoriumDto(Collections.emptyMap(), Collections.emptyList());
     }
 
-    public AuditoriumDto getAuditoriumSeatingFor(String showId) {
+    public AuditoriumDto findByShowId(String showId) {
         if (repository.containsKey(showId))
         {
             return repository.get(showId);
