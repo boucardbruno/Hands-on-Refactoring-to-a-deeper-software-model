@@ -29,7 +29,7 @@ public class AuditoriumLayoutRepository : IProvideAuditoriumLayouts
             }
     }
 
-    public AuditoriumDto GetAuditoriumSeatingFor(string showId)
+    public AuditoriumDto FindByShowId(string showId)
     {
         if (_repository.ContainsKey(showId)) return _repository[showId];
 
