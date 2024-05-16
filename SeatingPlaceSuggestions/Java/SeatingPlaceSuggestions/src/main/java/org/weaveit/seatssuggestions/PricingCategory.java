@@ -1,32 +1,37 @@
 package org.weaveit.seatssuggestions;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public enum PricingCategory {
-    First(1),
-    Second(2),
-    Third(3),
-    Mixed(4);
+    FIRST(1),
+    SECOND(2),
+    THIRD(3),
+    MIXED(4);
 
-    private int value;
-    private static Map map = new HashMap();
-
-    private PricingCategory(int value) {
-        this.value = value;
-    }
+    private final int value;
+    private static final Map<Integer, PricingCategory> map;
 
     static {
-        for (PricingCategory pageType : PricingCategory.values()) {
-            map.put(pageType.value, pageType);
-        }
+        map = Stream.of(PricingCategory.values())
+                .collect(Collectors.toUnmodifiableMap(PricingCategory::getValue, category -> category));
     }
 
-    public static PricingCategory valueOf(int pageType) {
-        return (PricingCategory) map.get(pageType);
+    PricingCategory(int value) {
+        this.value = value;
     }
 
     public int getValue() {
         return value;
     }
+
+    public static PricingCategory valueOf(int pageType) {
+        PricingCategory category = map.get(pageType);
+        if (category == null) {
+            throw new IllegalArgumentException("No enum constant with value " + pageType);
+        }
+        return category;
+    }
 }
+

@@ -5,11 +5,11 @@ import java.util.Objects;
 public record SeatingPlace(String rowName, int number, PricingCategory pricingCategory, SeatingPlaceAvailability seatingPlaceAvailability) {
 
     public boolean isAvailable() {
-        return seatingPlaceAvailability == SeatingPlaceAvailability.Available;
+        return seatingPlaceAvailability == SeatingPlaceAvailability.AVAILABLE;
     }
 
     public boolean matchCategory(PricingCategory pricingCategory) {
-        if (pricingCategory == PricingCategory.Mixed) {
+        if (pricingCategory == PricingCategory.MIXED) {
             return true;
         }
 
@@ -17,8 +17,8 @@ public record SeatingPlace(String rowName, int number, PricingCategory pricingCa
     }
 
     public SeatingPlace allocate() {
-        if (seatingPlaceAvailability == SeatingPlaceAvailability.Available) {
-            return new SeatingPlace(rowName, number, pricingCategory, SeatingPlaceAvailability.Allocated);
+        if (seatingPlaceAvailability == SeatingPlaceAvailability.AVAILABLE) {
+            return new SeatingPlace(rowName, number, pricingCategory, SeatingPlaceAvailability.ALLOCATED);
         }
         return this;
     }

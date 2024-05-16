@@ -31,7 +31,7 @@ public record Row(String name, List<SeatingPlace> seatingPlaces) {
 
         for (SeatingPlace currentSeat : seatingPlaces) {
             if (currentSeat.sameSeatingPlace(seatingPlace)) {
-                newVersionOfSeats.add(new SeatingPlace(seatingPlace.rowName(), seatingPlace.number(), seatingPlace.pricingCategory(), SeatingPlaceAvailability.Allocated));
+                newVersionOfSeats.add(new SeatingPlace(seatingPlace.rowName(), seatingPlace.number(), seatingPlace.pricingCategory(), SeatingPlaceAvailability.ALLOCATED));
             } else {
                 newVersionOfSeats.add(currentSeat);
             }

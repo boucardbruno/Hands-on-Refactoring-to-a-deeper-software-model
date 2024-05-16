@@ -43,7 +43,7 @@ public class AuditoriumSeatingProvider {
 
                 boolean isReserved = reservedSeatsDto.reservedSeats().contains(seatDto.name());
 
-                seats.add(new SeatingPlace(rowName, number, pricingCategory, isReserved ? SeatingPlaceAvailability.Reserved : SeatingPlaceAvailability.Available));
+                seats.add(new SeatingPlace(rowName, number, pricingCategory, isReserved ? SeatingPlaceAvailability.RESERVED : SeatingPlaceAvailability.AVAILABLE));
             });
 
             rows.put(rowDto.getKey(), new Row(rowDto.getKey(), seats));

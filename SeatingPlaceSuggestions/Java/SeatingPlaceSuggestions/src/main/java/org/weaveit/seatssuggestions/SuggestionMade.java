@@ -1,13 +1,12 @@
 package org.weaveit.seatssuggestions;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class SuggestionMade {
 
-    private List<SeatingPlace> suggestedSeats;
-    private int partyRequested;
-    private PricingCategory pricingCategory;
+    private final List<SeatingPlace> suggestedSeats;
+    private final int partyRequested;
+    private final PricingCategory pricingCategory;
 
     public SuggestionMade(SeatingOptionSuggested seatingOptionSuggested) {
         this.suggestedSeats = List.copyOf(seatingOptionSuggested.seats());
@@ -16,7 +15,7 @@ public class SuggestionMade {
     }
 
     public List<String> seatNames() {
-        return suggestedSeats.stream().map(SeatingPlace::toString).collect(Collectors.toList());
+        return suggestedSeats.stream().map(SeatingPlace::toString).toList();
     }
 
     public boolean matchExpectation() {

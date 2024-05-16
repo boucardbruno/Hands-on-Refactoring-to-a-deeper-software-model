@@ -18,13 +18,13 @@ public class SeatingPlaceRecommender {
         SuggestionsMade suggestionsMade = new SuggestionsMade(showId, partyRequested);
         
         suggestionsMade.add(giveMeSuggestionsFor(auditoriumSeating, partyRequested,
-                PricingCategory.First));
+                PricingCategory.FIRST));
         suggestionsMade.add(giveMeSuggestionsFor(auditoriumSeating,partyRequested,
-                PricingCategory.Second));
+                PricingCategory.SECOND));
         suggestionsMade.add(giveMeSuggestionsFor(auditoriumSeating,partyRequested,
-                PricingCategory.Third));
+                PricingCategory.THIRD));
         suggestionsMade.add(giveMeSuggestionsFor(auditoriumSeating,partyRequested,
-                PricingCategory.Mixed));
+                PricingCategory.MIXED));
 
         if (!suggestionsMade.matchExpectations()) {
             return new SuggestionNotAvailable(showId, partyRequested);

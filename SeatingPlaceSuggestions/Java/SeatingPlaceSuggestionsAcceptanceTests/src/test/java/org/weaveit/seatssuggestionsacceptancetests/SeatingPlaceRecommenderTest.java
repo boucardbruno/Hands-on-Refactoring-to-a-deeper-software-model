@@ -6,7 +6,6 @@ import org.weaveit.seatssuggestions.*;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,7 +29,7 @@ class SeatingPlaceRecommenderTest {
         SeatingPlaceRecommender seatingPlaceRecommender = new SeatingPlaceRecommender(auditoriumLayoutAdapter);
 
         SuggestionsMade suggestionsMade = seatingPlaceRecommender.makeSuggestion(showId, partyRequested);
-        assertThat(suggestionsMade.seatNames(PricingCategory.First)).containsExactly("A3");
+        assertThat(suggestionsMade.seatNames(PricingCategory.FIRST)).containsExactly("A3");
     }
 
     @Test
@@ -82,7 +81,7 @@ class SeatingPlaceRecommenderTest {
 //                "First pricing category should match"
 //        );
 
-        assertThat(suggestionsMade.seatNames(PricingCategory.First)).containsExactly("A3","A4","A5","A6");
+        assertThat(suggestionsMade.seatNames(PricingCategory.FIRST)).containsExactly("A3","A4","A5","A6");
 
 //        assertIterableEquals(
 //               List.of("A1", "A2", "A9"),
@@ -90,7 +89,7 @@ class SeatingPlaceRecommenderTest {
 //                "Second pricing category should match"
 //        );
 
-        assertThat(suggestionsMade.seatNames(PricingCategory.Second)).containsExactly("A1", "A2", "A9");
+        assertThat(suggestionsMade.seatNames(PricingCategory.SECOND)).containsExactly("A1", "A2", "A9");
 
 //        assertIterableEquals(
 //                List.of("E1", "E2", "E3"),
@@ -98,7 +97,7 @@ class SeatingPlaceRecommenderTest {
 //                "Third pricing category should match"
 //        );
 
-        assertThat(suggestionsMade.seatNames(PricingCategory.Third)).containsExactly("E1", "E2", "E3");
+        assertThat(suggestionsMade.seatNames(PricingCategory.THIRD)).containsExactly("E1", "E2", "E3");
 
 
         // BUG!!! => return A6, A7, A8 instead of the expected A1, A2, A3
@@ -108,7 +107,7 @@ class SeatingPlaceRecommenderTest {
 //                "Mixed pricing category should match"
 //        );
 
-        assertThat(suggestionsMade.seatNames(PricingCategory.Mixed)).containsExactly("A1", "A2", "A3");
+        assertThat(suggestionsMade.seatNames(PricingCategory.MIXED)).containsExactly("A1", "A2", "A3");
 
     }
 }
