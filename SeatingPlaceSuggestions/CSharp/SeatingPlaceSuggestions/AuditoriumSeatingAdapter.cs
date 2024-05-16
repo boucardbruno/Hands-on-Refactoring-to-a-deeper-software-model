@@ -40,7 +40,7 @@ public class AuditoriumSeatingAdapter(
             rows[rowDto.Key] = new Row(rowDto.Key, seats);
         }
 
-        return new AuditoriumSeating(rows);
+        return new(rows);
     }
 
     private static PricingCategory ConvertCategory(int seatDtoCategory)

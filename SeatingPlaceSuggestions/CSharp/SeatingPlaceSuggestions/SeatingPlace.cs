@@ -3,20 +3,17 @@ using Value;
 
 namespace SeatsSuggestions;
 
-public class SeatingPlace : ValueType<SeatingPlace>
+public class SeatingPlace(
+    string rowName,
+    int number,
+    PricingCategory pricingCategory,
+    SeatingPlaceAvailability seatingPlaceAvailability)
+    : ValueType<SeatingPlace>
 {
-    public SeatingPlace(string rowName, int number, PricingCategory pricingCategory, SeatingPlaceAvailability seatingPlaceAvailability)
-    {
-        RowName = rowName;
-        Number = number;
-        PricingCategory = pricingCategory;
-        SeatingPlaceAvailability = seatingPlaceAvailability;
-    }
-
-    public string RowName { get; }
-    public int Number { get; }
-    public PricingCategory PricingCategory { get; }
-    public SeatingPlaceAvailability SeatingPlaceAvailability { get; }
+    public string RowName { get; } = rowName;
+    public int Number { get; } = number;
+    public PricingCategory PricingCategory { get; } = pricingCategory;
+    public SeatingPlaceAvailability SeatingPlaceAvailability { get; } = seatingPlaceAvailability;
 
     public bool IsAvailable()
     {

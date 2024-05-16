@@ -4,16 +4,10 @@ using Value;
 
 namespace SeatsSuggestions;
 
-public class Row : ValueType<Row>
+public class Row(string name, List<SeatingPlace> seatingPlaces) : ValueType<Row>
 {
-    public Row(string name, List<SeatingPlace> seatingPlaces)
-    {
-        Name = name;
-        SeatingPlaces = seatingPlaces;
-    }
-
-    public string Name { get; }
-    public List<SeatingPlace> SeatingPlaces { get; }
+    public string Name { get; } = name;
+    public List<SeatingPlace> SeatingPlaces { get; } = seatingPlaces;
 
     public Row AddSeatingPlace(SeatingPlace seatingPlace)
     {

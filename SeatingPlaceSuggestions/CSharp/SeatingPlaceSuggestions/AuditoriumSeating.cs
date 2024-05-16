@@ -4,20 +4,13 @@ using Value.Shared;
 
 namespace SeatsSuggestions;
 
-public class AuditoriumSeating : ValueType<AuditoriumSeating>
+public class AuditoriumSeating(Dictionary<string, Row> rows) : ValueType<AuditoriumSeating>
 {
-    private Dictionary<string, Row> _rows;
-
-    public AuditoriumSeating(Dictionary<string, Row> rows)
-    {
-        _rows = rows;
-    }
-
-    public IReadOnlyDictionary<string, Row> Rows => _rows;
+    public IReadOnlyDictionary<string, Row> Rows => rows;
 
     public SeatingOptionSuggested SuggestSeatingOptionFor(SuggestionRequest suggestionRequest)
     {
-        foreach (var row in _rows.Values)
+        foreach (var row in rows.Values)
         {
             var seatingOption = row.SuggestSeatingOption(suggestionRequest);
 
@@ -30,7 +23,7 @@ public class AuditoriumSeating : ValueType<AuditoriumSeating>
     public AuditoriumSeating Allocate(SeatingOptionSuggested seatingOptionSuggested)
     {
         // Update the seat references in the Auditorium
-        var newVersionOfRows = new Dictionary<string, Row>(_rows);
+        var newVersionOfRows = new Dictionary<string, Row>(rows);
 
         foreach (var updatedSeat in (IEnumerable<SeatingPlace>)seatingOptionSuggested.Seats)
         {
@@ -39,13 +32,13 @@ public class AuditoriumSeating : ValueType<AuditoriumSeating>
             newVersionOfRows[updatedSeat.RowName] = newVersionOfRow;
         }
 
-        _rows = newVersionOfRows;
+        rows = newVersionOfRows;
 
         return this;
     }
 
     protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
     {
-        return new object[] { new DictionaryByValue<string, Row>(_rows) };
+        return new object[] { new DictionaryByValue<string, Row>(rows) };
     }
 }

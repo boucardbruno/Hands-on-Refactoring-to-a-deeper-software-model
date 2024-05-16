@@ -6,19 +6,12 @@ namespace SeatsSuggestions;
 /// <summary>
 ///     Occurs when a Suggestion is made.
 /// </summary>
-public class SuggestionMade
+public class SuggestionMade(SeatingOptionSuggested seatingOptionSuggested)
 {
-    private readonly List<SeatingPlace> _suggestedSeats;
+    private readonly List<SeatingPlace> _suggestedSeats = seatingOptionSuggested.Seats;
 
-    public SuggestionMade(SeatingOptionSuggested seatingOptionSuggested)
-    {
-        PartyRequested = seatingOptionSuggested.PartyRequested;
-        PricingCategory = seatingOptionSuggested.PricingCategory;
-        _suggestedSeats = seatingOptionSuggested.Seats;
-    }
-
-    public int PartyRequested { get; }
-    public PricingCategory PricingCategory { get; }
+    public int PartyRequested { get; } = seatingOptionSuggested.PartyRequested;
+    public PricingCategory PricingCategory { get; } = seatingOptionSuggested.PricingCategory;
 
     public IReadOnlyList<SeatingPlace> SuggestedSeats => _suggestedSeats;
 

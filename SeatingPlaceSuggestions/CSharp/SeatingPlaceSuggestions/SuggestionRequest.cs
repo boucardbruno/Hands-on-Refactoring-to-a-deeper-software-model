@@ -3,16 +3,10 @@ using Value;
 
 namespace SeatsSuggestions;
 
-public class SuggestionRequest : ValueType<SuggestionRequest>
+public class SuggestionRequest(int partyRequested, PricingCategory pricingCategory) : ValueType<SuggestionRequest>
 {
-    public SuggestionRequest(int partyRequested, PricingCategory pricingCategory)
-    {
-        PartyRequested = partyRequested;
-        PricingCategory = pricingCategory;
-    }
-
-    public int PartyRequested { get; }
-    public PricingCategory PricingCategory { get; }
+    public int PartyRequested { get; } = partyRequested;
+    public PricingCategory PricingCategory { get; } = pricingCategory;
 
     protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
     {
