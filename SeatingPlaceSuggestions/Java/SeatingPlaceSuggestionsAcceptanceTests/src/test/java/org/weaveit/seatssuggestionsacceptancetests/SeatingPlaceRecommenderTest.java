@@ -11,7 +11,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
-class SeatingPlaceSuggestingMakerTest {
+class SeatingPlaceRecommenderTest {
 
 
     @Test
