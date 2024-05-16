@@ -2,5 +2,5 @@
 
 public interface IProvideAuditoriumLayouts
 {
-    AuditoriumDto GetAuditoriumSeatingFor(string showId);
+    AuditoriumDto FindByShowId(string showId);
 }
