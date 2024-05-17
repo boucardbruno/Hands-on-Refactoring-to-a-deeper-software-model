@@ -32,9 +32,9 @@ public class AuditoriumSeating(Dictionary<string, Row> rows) : ValueType<Auditor
             newVersionOfRows[updatedSeat.RowName] = newVersionOfRow;
         }
 
-        //rows = newVersionOfRows;
+        rows = newVersionOfRows;
 
-        return  new AuditoriumSeating(newVersionOfRows);
+        return this;
     }
 
     protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
