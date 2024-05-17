@@ -29,7 +29,7 @@ public class RowShould
 
     [Test]
     public void
-        Offer_seating_places_from_the_middle_of_the_row_when_the_row_size_is_even_and_party_size_is_greater_than_one()
+       Suggest_places_options_closer_to_the_center_of_row_when_xxx_happened()
     {
         var partySize = 2;
 
@@ -45,46 +45,18 @@ public class RowShould
         var a10 = new SeatingPlace("A", 10, PricingCategory.Second, SeatingPlaceAvailability.Available);
 
         var row = new Row("A", new List<SeatingPlace> { a1, a2, a3, a4, a5, a6, a7, a8, a9, a10 });
-        Check.That(MakeSeatingPlacesWithDistance(row))
-        var seatingPlaces = OfferSeatsNearerTheMiddleOfTheRow(row, PricingCategory.Mixed)
+      
+        var seatingPlaces = SuggestPlacesOptionsCloserTheCenterOfARow(row, PricingCategory.Mixed)
             .Take(partySize);
 
         Check.That(seatingPlaces)
             .ContainsExactly(a5, a6);
     }
-
+    
     // Deep Modeling: probing the code should start with a prototype.
-    private IEnumerable<SeatingPlace> OfferSeatsNearerTheMiddleOfTheRow(Row row, PricingCategory pricingCategory)
+    private IEnumerable<SeatingPlace> SuggestPlacesOptionsCloserTheCenterOfARow(Row row, PricingCategory pricingCategory)
     {
-        return MakeSeatingPlacesWithDistance(row);
+        return new List<SeatingPlace>();
     }
-
-    private static IEnumerable<SeatingPlace> MakeSeatingPlacesWithDistance(Row row)
-    {
-        // Compute the distance from the middle of the row
-        var middleOfTheRow = row.SeatingPlaces.Count / 2;
-        // Left side:   A1:4, A2:3, A3:2, A4:1, A5:0
-        var seatingPlacesForLeftSide = row.SeatingPlaces
-            .Take(middleOfTheRow)
-            .Select(seatingPlace => new SeatingPlace(
-                seatingPlace.RowName,
-                seatingPlace.Number,
-                seatingPlace.PricingCategory,
-                seatingPlace.SeatingPlaceAvailability,
-                // middleOfTheRow(5) - A3 => 2
-                middleOfTheRow - seatingPlace.Number
-            ));
-
-        // Right side:  A6:0, A7:1, A8:2, A9:3, A10:4
-        var seatingPlacesForTheRightSide = row.SeatingPlaces
-            .Skip(middleOfTheRow)
-            .Select(seatingPlace => new SeatingPlace(
-                seatingPlace.RowName,
-                seatingPlace.Number,
-                seatingPlace.PricingCategory,
-                seatingPlace.SeatingPlaceAvailability,
-                seatingPlace.Number - middleOfTheRow));
-        
-        return seatingPlacesForLeftSide.Concat(seatingPlacesForTheRightSide);
-    }
+  
 }
