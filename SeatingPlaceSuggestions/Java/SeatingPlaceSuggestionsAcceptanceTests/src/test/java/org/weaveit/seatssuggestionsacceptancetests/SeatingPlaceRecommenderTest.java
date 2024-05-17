@@ -75,7 +75,7 @@ class SeatingPlaceRecommenderTest {
 
         SuggestionsMade suggestionsMade = seatingPlaceRecommender.makeSuggestion(showId, partyRequested);
 
-        assertThat(suggestionsMade.seatNames(PricingCategory.FIRST)).containsExactly("A3","A4","A5","A6");
+        assertThat(suggestionsMade.seatNames(PricingCategory.FIRST)).containsExactly("A3","A4","A5");
         assertThat(suggestionsMade.seatNames(PricingCategory.SECOND)).containsExactly("A1", "A2", "A9");
         assertThat(suggestionsMade.seatNames(PricingCategory.THIRD)).containsExactly("E1", "E2", "E3");
         assertThat(suggestionsMade.seatNames(PricingCategory.MIXED)).containsExactly("A1", "A2", "A3");
