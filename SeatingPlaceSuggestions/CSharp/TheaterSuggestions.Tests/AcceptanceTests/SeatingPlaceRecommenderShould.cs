@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace SeatsSuggestions.Tests.AcceptanceTests;
 
 [TestFixture]
-public class SeatingPlaceSuggestingMakerShould
+public class SeatingPlaceRecommenderShould
 {
     [Test]
     public void Return_SeatsNotAvailable_when_Auditorium_has_all_its_seats_already_reserved()
@@ -22,9 +22,9 @@ public class SeatingPlaceSuggestingMakerShould
         var auditoriumLayoutAdapter =
             new AuditoriumSeatingAdapter(new AuditoriumLayoutRepository(), new ReservationsProvider());
 
-        var seatingPlaceSuggestingMaker = new SeatingPlaceRecommender(auditoriumLayoutAdapter);
+        var seatingPlaceRecommender = new SeatingPlaceRecommender(auditoriumLayoutAdapter);
 
-        var suggestionsMade = seatingPlaceSuggestingMaker.MakeSuggestions(showId, partyRequested);
+        var suggestionsMade = seatingPlaceRecommender.MakeSuggestions(showId, partyRequested);
         Check.That(suggestionsMade.PartyRequested).IsEqualTo(partyRequested);
         Check.That(suggestionsMade.ShowId).IsEqualTo(showId);
 
@@ -45,9 +45,9 @@ public class SeatingPlaceSuggestingMakerShould
         var auditoriumLayoutAdapter =
             new AuditoriumSeatingAdapter(new AuditoriumLayoutRepository(), new ReservationsProvider());
 
-        var seatingPlaceSuggestingMaker = new SeatingPlaceRecommender(auditoriumLayoutAdapter);
+        var seatingPlaceRecommender = new SeatingPlaceRecommender(auditoriumLayoutAdapter);
 
-        var suggestionsMade = seatingPlaceSuggestingMaker.MakeSuggestions(showId, partyRequested);
+        var suggestionsMade = seatingPlaceRecommender.MakeSuggestions(showId, partyRequested);
 
         Check.That(suggestionsMade.SeatNames(PricingCategory.First)).ContainsExactly("A3");
     }
@@ -70,9 +70,9 @@ public class SeatingPlaceSuggestingMakerShould
         var auditoriumLayoutAdapter =
             new AuditoriumSeatingAdapter(new AuditoriumLayoutRepository(), new ReservationsProvider());
 
-        var seatingPlaceSuggestingMaker = new SeatingPlaceRecommender(auditoriumLayoutAdapter);
+        var seatingPlaceRecommender = new SeatingPlaceRecommender(auditoriumLayoutAdapter);
 
-        var suggestionsMade = seatingPlaceSuggestingMaker.MakeSuggestions(showId, partyRequested);
+        var suggestionsMade = seatingPlaceRecommender.MakeSuggestions(showId, partyRequested);
 
         Check.That(suggestionsMade.SeatNames(PricingCategory.First)).ContainsExactly("A3", "A4", "A5");
         Check.That(suggestionsMade.SeatNames(PricingCategory.Second)).ContainsExactly("A1", "A2", "A9");
