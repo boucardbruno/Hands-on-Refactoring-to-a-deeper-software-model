@@ -78,7 +78,6 @@ public class SeatingPlaceRecommenderShould
         Check.That(suggestionsMade.SeatNames(PricingCategory.Second)).ContainsExactly("A1", "A2", "A9");
         Check.That(suggestionsMade.SeatNames(PricingCategory.Third)).ContainsExactly("E1", "E2", "E3");
         
-        // BUG!!! => return A6, A7, A8 instead of the expected A1, A2, A3
         Check.That(suggestionsMade.SeatNames(PricingCategory.Mixed)).ContainsExactly("A1", "A2", "A3");
     }
 }
