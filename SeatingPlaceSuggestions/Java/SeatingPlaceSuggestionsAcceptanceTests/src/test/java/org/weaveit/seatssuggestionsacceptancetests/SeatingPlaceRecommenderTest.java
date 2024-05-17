@@ -75,38 +75,9 @@ class SeatingPlaceRecommenderTest {
 
         SuggestionsMade suggestionsMade = seatingPlaceRecommender.makeSuggestion(showId, partyRequested);
 
-//        assertIterableEquals(
-//                List.of("A3", "A4", "A5"),
-//                suggestionsMade.seatNames(PricingCategory.First),
-//                "First pricing category should match"
-//        );
-
         assertThat(suggestionsMade.seatNames(PricingCategory.FIRST)).containsExactly("A3","A4","A5","A6");
-
-//        assertIterableEquals(
-//               List.of("A1", "A2", "A9"),
-//                suggestionsMade.seatNames(PricingCategory.Second),
-//                "Second pricing category should match"
-//        );
-
         assertThat(suggestionsMade.seatNames(PricingCategory.SECOND)).containsExactly("A1", "A2", "A9");
-
-//        assertIterableEquals(
-//                List.of("E1", "E2", "E3"),
-//                suggestionsMade.seatNames(PricingCategory.Third),
-//                "Third pricing category should match"
-//        );
-
         assertThat(suggestionsMade.seatNames(PricingCategory.THIRD)).containsExactly("E1", "E2", "E3");
-
-
-        // BUG!!! => return A6, A7, A8 instead of the expected A1, A2, A3
-//        assertIterableEquals(
-//                List.of("A1", "A2", "A3"),
-//                suggestionsMade.seatNames(PricingCategory.Mixed),
-//                "Mixed pricing category should match"
-//        );
-
         assertThat(suggestionsMade.seatNames(PricingCategory.MIXED)).containsExactly("A1", "A2", "A3");
 
     }
