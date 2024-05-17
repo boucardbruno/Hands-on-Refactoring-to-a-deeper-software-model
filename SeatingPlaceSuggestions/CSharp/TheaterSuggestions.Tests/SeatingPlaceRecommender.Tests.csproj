@@ -67,7 +67,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SeatingPlaceRecommender\SeatingPlaceRecommender.csproj" />
+    <ProjectReference Include="..\SeatingPlaceSuggestions\SeatingPlaceSuggestions.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -7,13 +7,15 @@ public class SeatingPlace(
     string rowName,
     int number,
     PricingCategory pricingCategory,
-    SeatingPlaceAvailability seatingPlaceAvailability)
+    SeatingPlaceAvailability seatingPlaceAvailability,
+    int distanceFromTheMiddleOfTheRow = -1)
     : ValueType<SeatingPlace>
 {
     public string RowName { get; } = rowName;
     public int Number { get; } = number;
     public PricingCategory PricingCategory { get; } = pricingCategory;
     public SeatingPlaceAvailability SeatingPlaceAvailability { get; } = seatingPlaceAvailability;
+    public int DistanceFromTheMiddleOfTheRow { get; } = distanceFromTheMiddleOfTheRow;
 
     public bool IsAvailable()
     {
