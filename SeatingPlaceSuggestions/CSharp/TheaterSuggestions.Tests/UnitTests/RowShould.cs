@@ -60,5 +60,4 @@ public class RowShould
         // Implement your method logic here
         return new List<SeatingPlace>();
     }
-  
 }
