@@ -28,8 +28,9 @@ public class RowShould
     }
 
     [Test]
+    [Ignore("Lab2")]
     public void
-       Suggest_places_options_closer_to_the_center_of_row_when_xxx_happened()
+       Suggest_places_options_closer_to_the_center_of_row_when_x_happened()
     {
         var partySize = 2;
 
@@ -53,9 +54,10 @@ public class RowShould
             .ContainsExactly(a5, a6);
     }
     
-    // Deep Modeling: probing the code should start with a prototype.
+    // Deep Modeling: probing the code should start with a prototype
     private IEnumerable<SeatingPlace> SuggestPlacesOptionsCloserTheCenterOfARow(Row row, PricingCategory pricingCategory)
     {
+        // Implement your method logic here
         return new List<SeatingPlace>();
     }
   
