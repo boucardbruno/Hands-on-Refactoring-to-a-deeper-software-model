@@ -16,7 +16,8 @@ public class SeatingPlaceShould
         Check.That(secondInstance).IsEqualTo(firstInstance);
 
         // Should not mutate existing instance 
-        secondInstance.Allocate();
+        var newSeatingPlace = secondInstance.Allocate();
+        Check.That(newSeatingPlace).IsNotEqualTo(secondInstance);
         Check.That(secondInstance).IsEqualTo(firstInstance);
     }
 }
