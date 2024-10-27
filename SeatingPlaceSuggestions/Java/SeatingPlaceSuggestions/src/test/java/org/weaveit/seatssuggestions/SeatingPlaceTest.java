@@ -15,7 +15,8 @@ class SeatingPlaceTest {
         assertEquals(firstInstance, secondInstance, "Instances with the same values should be equal");
 
         // Should not mutate existing instance
-        secondInstance.allocate();
+        SeatingPlace newSeatingPlace = secondInstance.allocate();
+        assertNotEquals(newSeatingPlace, secondInstance);
         assertEquals(firstInstance, secondInstance, "Instance should not mutate existing instance");
     }
 }
